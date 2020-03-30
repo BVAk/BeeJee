@@ -27,7 +27,7 @@ class TaskController extends SystemController
         $task  = new Task($this->config);
         $tasks = $task->getAll();
         $amountOfTasks = $task->getAmountTasks();
-        
+
         // load views.
         $this->view('task/list', [
             'tasks'         => $tasks,
@@ -63,18 +63,21 @@ class TaskController extends SystemController
         if ($this->isAdmin) {
             if (isset($_POST['submit_update_task'])) {
                 $task = new Task($this->config);
+                $taskdata = $task->getTask($taskId);
+
                 $task->updateTask([
                     'taskId'   => $_POST['id'],
                     'comments' => $_POST['comments'],
-                    'status'   => isset($_POST['status']) && $_POST['status'] ? 1 : 0
+                    'status'   => isset($_POST['status']) && $_POST['status'] ? 1 : 0,
+                    'edited' => $_POST['comments'] != $taskdata->comments ? 1 : 0
                 ]);
                 header('location: ' . $this->config['base_path']);
             } elseif (isset($taskId)) {
                 $task = new Task($this->config);
                 $task = $task->getTask($taskId);
-    
+
                 if ($task === false) {
-                    $page= new ErrorController($this->config);
+                    $page = new ErrorController($this->config);
                     $page->errorAction();
                 } else {
                     // load views.
@@ -87,6 +90,6 @@ class TaskController extends SystemController
             }
         } else {
             header('location: ' . $this->config['base_path']);
-        }        
+        }
     }
 }

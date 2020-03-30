@@ -22,11 +22,16 @@
       <td><?php echo $task->username ?? ''; ?></td>
       <td><?php echo $task->email ?? ''; ?></td>
       <td><?php echo $task->comments ?? ''; ?></td>
+      <td>
 <?php if (isset($task->status) && $task->status) { ?>
-      <td><span class="badge badge-success">Completed</span></td>
+      <span class="badge badge-success">Completed</span>
 <?php } else {?>
-      <td><span class="badge badge-warning">Not completed</span></td>
+      <span class="badge badge-warning">Not completed</span>
 <?php } ?>
+<?php if (isset($task->status) && $task->status) { ?>
+      <span class="badge badge-success">Edited</span>
+      <?php }?>
+</td>
 <?php if (isset($this->isAdmin) && $this->isAdmin) { ?>
       <td><a href="<?php echo $this->basePath; ?>task/edit/<?php echo $task->id; ?>">Edit</a></td>
 <?php }?>

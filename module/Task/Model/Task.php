@@ -68,11 +68,12 @@ class Task extends TaskEntity
     public function updateTask(array $data)
     {
         extract($data);
-        $query = $this->db->prepare('UPDATE task SET comments = :comments, status = :status WHERE id = :id');
+        $query = $this->db->prepare('UPDATE task SET comments = :comments, status = :status, edited=:edited WHERE id = :id');
 
         $query->execute(array (
             ':comments' => $comments,
             ':status'   => $status,
+            ':edited'   => $edited,
             ':id'       => $taskId
         ));
     }

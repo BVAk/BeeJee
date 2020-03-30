@@ -41,4 +41,10 @@ class TaskEntity extends SystemModel
      * @var boolean $status
      */
     public $status;
+
+    /**
+     * Id
+     * @var boolean $edited
+     */
+    public $edited;
 }
