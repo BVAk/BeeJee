@@ -1,0 +1,14 @@
+{
+    "name": "beejeephp",
+    "description": "Task book application",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "Application\\": "module/Application/",
+            "Task\\": "module/Task/",
+            "Admin\\": "module/Admin/"
+        }
+    }
+}
