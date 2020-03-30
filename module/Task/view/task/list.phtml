@@ -28,7 +28,7 @@
 <?php } else {?>
       <span class="badge badge-warning">Not completed</span>
 <?php } ?>
-<?php if (isset($task->status) && $task->status) { ?>
+<?php if (isset($task->edited) && $task->edited) { ?>
       <span class="badge badge-success">Edited</span>
       <?php }?>
 </td>
