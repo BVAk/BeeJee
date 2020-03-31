@@ -56,9 +56,7 @@ class Task extends TaskEntity
             ':userName' => $userName,
             ':email'    => $email,
             ':comments' => $comments
-        ));
-
-       
+        ));      
     }
 
     /**

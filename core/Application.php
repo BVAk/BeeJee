@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use Application\Controller\ApplicationController;
 use \Application\Controller\ErrorController;
 
 class Application
@@ -43,7 +44,7 @@ class Application
 
         if (!$this->controller) {
             $page = new ApplicationController($this->config);
-            $page->listAction();
+            $page->indexAction();
         } elseif (file_exists($fileController)) {
             $controller = new $classController($this->config);
 
